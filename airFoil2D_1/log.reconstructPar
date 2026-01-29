@@ -1,0 +1,432 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2506                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _615aae61-20250627 OPENFOAM=2506 version=2506
+Arch   : "LSB;label=32;scalar=64"
+Exec   : reconstructPar
+Date   : Jan 01 2026
+Time   : 03:10:09
+Host   : 5bd91d4c474a
+PID    : 4558
+I/O    : uncollated
+Case   : /home/openfoam/Projects/airFoil2D
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+
+Reconstructing fields
+region=region0
+
+Time = 50
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 100
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 150
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 200
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 250
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 300
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 350
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 400
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 450
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 500
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        div(phi)
+        magR
+        nuTilda
+        nut
+        p
+        turbulenceProperties:I
+        turbulenceProperties:L
+        turbulenceProperties:epsilon
+        turbulenceProperties:k
+        turbulenceProperties:nuEff
+        turbulenceProperties:nut
+
+    Reconstructing volVectorFields
+
+        U
+        momentError
+
+    Reconstructing volSymmTensorFields
+
+        turbulenceProperties:R
+        turbulenceProperties:devReff
+
+    Reconstructing surfaceScalarFields
+
+        phi
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+
+End
+

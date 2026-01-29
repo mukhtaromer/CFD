@@ -1,0 +1,212 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     simpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         500;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   50;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    momErr
+    {
+        type            momentumError;
+        libs            (fieldFunctionObjects);
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
+
+    contErr
+    {
+        type            div;
+        libs            (fieldFunctionObjects);
+        field           phi;
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
+
+
+    turbulenceFields1
+    {
+        type            turbulenceFields;
+        libs            (fieldFunctionObjects);
+        fields
+        (
+            k
+            epsilon
+            nut
+            nuEff
+            R
+            devReff
+            L
+            I
+        );
+
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
+
+    mag1
+    {
+        type            mag;
+        libs            (fieldFunctionObjects);
+        field           turbulenceProperties:R;
+
+        result          magR;
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
+
+
+    pressureCoeff
+    {
+        type            pressure;
+        libs            (fieldFunctionObjects);
+        mode            staticCoeff;
+        p               p;
+        U               U;
+        rho             rhoInf;
+        rhoInf          1.225;
+        pInf            0;
+        UInf            (25.75 3.62 0);
+        writeFields     true;
+    }
+
+
+    sampleCpOnWall
+    {
+        type            surfaces;
+        libs            (sampling);
+        writeControl    timeStep;
+        writeInterval   1;
+        surfaceFormat   raw;
+
+        fields          (static(p)_coeff);
+
+        surfaces
+        {
+            airfoilWall
+            {
+                type        patch;
+                patches     (walls);
+                interpolate true;
+            }
+        }
+    }
+
+
+    wallShearStress
+    {
+        type            wallShearStress;
+        libs            (fieldFunctionObjects);
+        patches         (walls);
+        writeControl    timeStep;
+        writeInterval   1;
+    }
+
+    // magnitude of wall shear stress (works on patch values)
+    tauWmag
+    {
+        type            mag;
+        libs            (fieldFunctionObjects);
+        field           wallShearStress;
+        result          tauWmag;
+        writeControl    timeStep;
+        writeInterval   1;
+    }
+
+
+    // Cf = tauWmag / (0.5*Uinf^2)
+    Cf
+    {
+        type            exprField;
+        libs            (fieldFunctionObjects);
+
+        action          new;
+        field           Cf;
+
+        // important for postProcess: load tauWmag from the time directory
+        readFields      (tauWmag);
+
+        expression      "tauWmag/(0.5*sqr(26.00321))";
+
+        dimensions      [0 0 0 0 0 0 0];
+        autowrite       true;
+
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
+
+
+
+
+    sampleCfOnWall
+    {
+        type            surfaces;
+        libs            (sampling);
+
+        writeControl    timeStep;
+        writeInterval   1;
+        surfaceFormat   raw;
+
+        fields          (Cf);
+
+        surfaces
+        {
+            airfoilWall
+            {
+                type        patch;
+                patches     (walls);
+                interpolate true;
+            }
+        }
+    }
+
+
+
+
+
+
+
+}
+
+
+// ************************************************************************* //

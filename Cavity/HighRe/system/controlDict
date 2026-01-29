@@ -1,0 +1,108 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+    
+      //Metadata block:
+     //version 2.0 – File syntax version (not solver version).
+     //format ascii – File is stored as readable text (instead of binary).
+    //class dictionary – Tells OpenFOAM this file is a “dictionary” (key–value config).
+   //object controlDict – The engine expects this file to be named/used as controlDict.
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     icoFoam;
+
+startFrom       latestTime; //start from "startTime" which is specified below.
+
+startTime       0.5;  //start from 0(read the initial fields from directory 0/).
+
+stopAt          endTime; //stop the simulation at "endTime" which is specified below.
+
+endTime         2; //stop simulation at 0.5 s.
+
+deltaT          0.005; //take a time step of 0.005 s from 0 until you reach 0.5 s.
+
+writeControl    timeStep; //controls when results are written. timestep-write every N time steps by "writeInterval"
+
+writeInterval   20; //this means write every 20 steps.
+
+//Total steps = (endTime -startTime) / deltaT = 0.5 / 0.005 = 100 steps.
+
+//Writes every 20 steps → (100/20)+1: 6 writes(output files) : 0, 0.1, 0.2, 0.3, 0.4, 0.5.
+
+//Outputs are ASCII, uncompressed, with 6 significant digits.
+
+purgeWrite      0; //How many time directories to keep:0 → keep all (no purging).
+
+writeFormat     ascii; //Field files are written in ASCII (human-readable). Alternative: binary (smaller/faster I/O, not human-readable).
+
+writePrecision  6; //Numeric precision (number of significant digits) when writing field values.
+
+writeCompression off; // Compression for written files: off → no compression. on → compresses output (e.g., .gz) to save disk space.
+
+timeFormat      general; //How to format time directory names: general → uses a compact floating-point representation. fixed → fixed-point with a set number of decimals.
+
+timePrecision   6; // Digits used in time directory names (together with timeFormat). 
+				  //E.g., with general and precision 6 you’ll get names like 0.1, 0.2, etc., without weird rounding artifacts.
+
+runTimeModifiable true;
+
+
+
+
+
+
+
+
+
+
+
+
+functions
+{
+    streamlines1
+    {
+        type            streamLine;
+        libs            ("libfieldFunctionObjects.so");
+
+        writeControl    writeTime;
+        setFormat       vtk;
+
+        U               U;
+        trackForward    yes;
+        fields          (U p);
+
+        lifeTime        10000;
+        trackLength     1e-3;
+        cloudName       particleTracks;
+
+        seedSampleSet
+        {
+            type        uniform;
+            axis        x;
+            start       (0.05 0 0.005);
+            end         (0.05 0.1 0.005);
+            nPoints     10;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+// ************************************************************************* //

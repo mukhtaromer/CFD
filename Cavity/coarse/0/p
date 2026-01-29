@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0; //file format version
+    format      ascii; //data is written in plain text
+    class       volScalarField; // the field is scalar. Pressure is scalar
+    object      p; // the name of the field. Should match the name of the file.
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0]; // Dimensions of kinematic pressure(P/rho). kg⁰ m^2 s^-2 K⁰ mol⁰ A⁰ cd⁰.
+internalField   uniform 0; // the Pressure is 0 everywhere.
+// here we specify the pressure at the boundaries.
+boundaryField
+{
+    movingWall
+    {
+        type            zeroGradient; //the wall does not prescribe pressure — it merely reacts to it.
+    }
+
+    fixedWalls
+    {
+        type            zeroGradient; // pressure does not change in the direction normal to the wall.
+    }
+
+    frontAndBack
+    {
+        type            empty; //the simulation is 2D.
+    }
+}
+
+//Velocity: “The wall tells the fluid what to do.”
+
+//Pressure: “The fluid tells the wall what pressure it experiences.”
+//Pressure is allowed to adjust freely at the wall, but it is not allowed to push fluid through the wall.”
+
+// ************************************************************************* //

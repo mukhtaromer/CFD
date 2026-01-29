@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2412                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+//This is just a banner.
+//It has no effect on the simulation.
+FoamFile
+{
+    version     2.0; //file format version
+    format      ascii; //Data is written in plain text(could also be binary)
+    class       volVectorField; //This field is a volume field of vectors. The velocity is a vector
+    object      U; //name of the field. Should match the filename.
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0]; //kg⁰ m¹ s⁻¹ K⁰ mol⁰ A⁰ cd⁰. Dimensions of velocity
+
+internalField   uniform (0 0 0); //This sets the initial velocity inside the entire domain. The velocity is same everywhere:0.
+// here we specify the velocity of the boundaries.
+boundaryField
+{
+    movingWall
+    {
+        type            fixedValue;
+        value           uniform (1 0 0); //a wall is moving with a constant velocity in the x-direction.
+    }
+
+    fixedWalls
+    {
+        type            noSlip;// other walls have zero velocity.
+    }
+
+    frontAndBack
+    {
+        type            empty;//the domain is 2D, with zero thickness in the third direction.
+    }
+}
+
+
+// ************************************************************************* //
