@@ -1,6 +1,6 @@
 # CFD and Numerical Methods
 
-This repository contains **OpenFOAM simulation cases** and a few **numerical-method notebooks**.  
+This repository contains **OpenFOAM simulation cases** and a few **numerical-method scripts/notebooks**.  
 The file **`OpenFoamcases.pdf`** contains the simulation results for the three OpenFOAM cases:
 
 - **Cavity** (lid-driven cavity flow)
